@@ -51,6 +51,9 @@ struct DessertDetails: View {
         }
     }
     
+    private let iPadImageScale = 1.0
+    private let iPhoneImageScale = 3.0
+    
     var instructionsList: some View {
         ScrollView {
             Text("Instructions")
@@ -58,7 +61,7 @@ struct DessertDetails: View {
                 .font(.system(.subheadline))
                 .padding()
             
-            let imageScale = idiom == .pad ? 1.0 : 3.0
+            let imageScale = idiom == .pad ? iPadImageScale : iPhoneImageScale
             AsyncImage(url: dessert.imageURL, scale:imageScale)
                 .aspectRatio(contentMode: .fit)
             
