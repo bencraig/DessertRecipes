@@ -30,7 +30,7 @@ struct DessertDetails: View {
         .navigationBarTitleDisplayMode(.inline)
         .task {
             if dessert.instructions == nil {
-                store.fetchDessert(mealID: dessert.id)
+                await store.getDessertDetails(mealID: dessert.id)
             }
         }
     }

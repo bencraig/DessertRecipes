@@ -12,6 +12,7 @@ struct DessertList: View {
 
     private let thumbnailScale = 20.0
     private let progressScale = 3.0
+    private let navTitle = "Dessert Recipes"
     
     var body: some View {
         NavigationStack {
@@ -31,7 +32,7 @@ struct DessertList: View {
                         }
                     }
                 }
-                .navigationTitle("Dessert Recipes") // todo -> refactor constants
+                .navigationTitle(navTitle)
             }
         }
     }

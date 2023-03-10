@@ -10,6 +10,12 @@
 		07443AF829BB817900959604 /* DessertRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07443AF729BB817900959604 /* DessertRecipesApp.swift */; };
 		07443AF929BB817900959604 /* DessertRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07443AF729BB817900959604 /* DessertRecipesApp.swift */; };
 		07443AFA29BB817900959604 /* DessertRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07443AF729BB817900959604 /* DessertRecipesApp.swift */; };
+		07443AFC29BB906600959604 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07443AFB29BB906600959604 /* NetworkService.swift */; };
+		07443AFD29BB906600959604 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07443AFB29BB906600959604 /* NetworkService.swift */; };
+		07443AFE29BB906600959604 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07443AFB29BB906600959604 /* NetworkService.swift */; };
+		07443B0029BB912500959604 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07443AFF29BB912500959604 /* DataService.swift */; };
+		07443B0129BB912500959604 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07443AFF29BB912500959604 /* DataService.swift */; };
+		07443B0229BB912500959604 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07443AFF29BB912500959604 /* DataService.swift */; };
 		079F60F329B971B500D92CEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 079F60F229B971B500D92CEE /* Assets.xcassets */; };
 		079F60F629B971B500D92CEE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 079F60F529B971B500D92CEE /* Preview Assets.xcassets */; };
 		079F610029B971B600D92CEE /* DessertRecipesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F60FF29B971B600D92CEE /* DessertRecipesTests.swift */; };
@@ -41,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		07443AF729BB817900959604 /* DessertRecipesApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DessertRecipesApp.swift; sourceTree = "<group>"; };
+		07443AFB29BB906600959604 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		07443AFF29BB912500959604 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		079F60EB29B971B400D92CEE /* DessertRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DessertRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		079F60F229B971B500D92CEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		079F60F529B971B500D92CEE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -109,6 +117,8 @@
 				079F611C29B971D800D92CEE /* DessertList.swift */,
 				079F611A29B971D800D92CEE /* DessertDetails.swift */,
 				079F611B29B971D800D92CEE /* DessertStore.swift */,
+				07443AFB29BB906600959604 /* NetworkService.swift */,
+				07443AFF29BB912500959604 /* DataService.swift */,
 				079F612429B9722500D92CEE /* UtilityExtensions.swift */,
 				079F60F229B971B500D92CEE /* Assets.xcassets */,
 				079F60F429B971B500D92CEE /* Preview Content */,
@@ -277,6 +287,8 @@
 				079F611F29B971D800D92CEE /* DessertDetails.swift in Sources */,
 				079F612129B971D800D92CEE /* DessertList.swift in Sources */,
 				079F611E29B971D800D92CEE /* Dessert.swift in Sources */,
+				07443AFC29BB906600959604 /* NetworkService.swift in Sources */,
+				07443B0029BB912500959604 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +297,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				07443AF929BB817900959604 /* DessertRecipesApp.swift in Sources */,
+				07443AFD29BB906600959604 /* NetworkService.swift in Sources */,
 				079F610029B971B600D92CEE /* DessertRecipesTests.swift in Sources */,
+				07443B0129BB912500959604 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +309,9 @@
 			files = (
 				07443AFA29BB817900959604 /* DessertRecipesApp.swift in Sources */,
 				079F610A29B971B600D92CEE /* DessertRecipesUITests.swift in Sources */,
+				07443AFE29BB906600959604 /* NetworkService.swift in Sources */,
 				079F610C29B971B600D92CEE /* DessertRecipesUITestsLaunchTests.swift in Sources */,
+				07443B0229BB912500959604 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
