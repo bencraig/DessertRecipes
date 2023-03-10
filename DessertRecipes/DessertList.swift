@@ -11,22 +11,28 @@ struct DessertList: View {
     @EnvironmentObject private var store: DessertStore
 
     private let thumbnailScale = 20.0
+    private let progressScale = 3.0
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(store.desserts) { dessert in
-                    NavigationLink (destination: DessertDetails(dessert: $store.desserts[dessert])){
-                        LazyHStack {
-                            AsyncImage(url: dessert.imageURL, scale: thumbnailScale)
-                                .aspectRatio(contentMode: .fit)
-                            Spacer()
-                            Text(dessert.name)
+            if store.desserts.isEmpty {
+                ProgressView()
+                    .scaleEffect(progressScale)
+            } else {
+                List {
+                    ForEach(store.desserts) { dessert in
+                        NavigationLink (destination: DessertDetails(dessert: $store.desserts[dessert])){
+                            LazyHStack {
+                                AsyncImage(url: dessert.imageURL, scale: thumbnailScale)
+                                    .aspectRatio(contentMode: .fit)
+                                Spacer()
+                                Text(dessert.name)
+                            }
                         }
                     }
                 }
+                .navigationTitle("Dessert Recipes") // todo -> refactor constants
             }
-            .navigationTitle("Dessert Recipes") // todo -> refactor constants
         }
     }
 }
