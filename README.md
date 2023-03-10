@@ -1,5 +1,5 @@
 # DessertRecipes
-Display dessert recipes from TheMealDB.com
+Display dessert recipes on iOS from TheMealDB.com
 
 Simply open the project and run in xcode. 
 
