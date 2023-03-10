@@ -20,29 +20,32 @@ class DessertStore: ObservableObject {
         
     init () {
         dataSource = NetworkService()
-        Task {
-            await loadDessertList()
-        }
-    }
-    
-    func loadDessertList() async {
-        let listResults = await dataSource.fetchDessertList()
         
-        DispatchQueue.main.async {
-            self.desserts = listResults
+        loadDessertList()
+    }
+    
+    func loadDessertList() {
+        Task {
+            let listResults = await dataSource.fetchDessertList()
+            
+            DispatchQueue.main.async {
+                self.desserts = listResults
+            }
         }
     }
     
-    func getDessertDetails(mealID: Int) async {
+    func getDessertDetails(mealID: Int) {
         guard let dessertIndex = self.desserts.firstIndex(where: {$0.id == mealID}) else {
             print("dessert not found")
             return
         }
         
-        let detailedDessert = await dataSource.fetchDessert(desserts[dessertIndex])
-        
-        DispatchQueue.main.async {
-            self.desserts[dessertIndex] = detailedDessert
+        Task {
+            let detailedDessert = await dataSource.fetchDessert(desserts[dessertIndex])
+            
+            DispatchQueue.main.async {
+                self.desserts[dessertIndex] = detailedDessert
+            }
         }
     }
 }
