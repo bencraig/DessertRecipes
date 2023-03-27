@@ -24,8 +24,15 @@ struct DessertList: View {
                     ForEach(store.desserts) { dessert in
                         NavigationLink (destination: DessertDetails(dessert: $store.desserts[dessert])){
                             LazyHStack {
-                                AsyncImage(url: dessert.imageURL, scale: thumbnailScale)
-                                    .aspectRatio(contentMode: .fit)
+                                AsyncImage(url: dessert.imageURL, content: { thumbImage in
+                                    thumbImage
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                        .scaledToFit()
+                                        .cornerRadius(5)
+                                }, placeholder: {
+                                    ProgressView()
+                                })
                                 Spacer()
                                 Text(dessert.name)
                             }

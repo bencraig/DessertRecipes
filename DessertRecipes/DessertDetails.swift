@@ -51,9 +51,9 @@ struct DessertDetails: View {
         }
     }
     
-    private let iPadImageScale = 1.0
-    private let iPhoneImageScale = 3.0
-    
+    private let iPadImageFactor = 3.0
+    private let iPhoneImageFactor = 1.0
+
     var instructionsList: some View {
         ScrollView {
             Text("Instructions")
@@ -61,10 +61,17 @@ struct DessertDetails: View {
                 .font(.system(.subheadline))
                 .padding()
             
-            let imageScale = idiom == .pad ? iPadImageScale : iPhoneImageScale
-            AsyncImage(url: dessert.imageURL, scale:imageScale)
-                .aspectRatio(contentMode: .fit)
-            
+            let imageScale = idiom == .pad ? iPadImageFactor : iPhoneImageFactor
+            AsyncImage(url: dessert.imageURL, content: { thumbImage in
+                thumbImage
+                    .resizable()
+                    .frame(width: 200 * imageScale, height: 200 * imageScale)
+                    .scaledToFit()
+                    .cornerRadius(5)
+            }, placeholder: {
+                ProgressView()
+            })
+
             if let source = dessert.sourceURL {
                 Link("Source: \(source.host!)", destination: source)
                     .padding(.top)
