@@ -28,7 +28,7 @@ class DessertStore: ObservableObject {
         Task {
             let listResults = await dataSource.fetchDessertList()
             
-            DispatchQueue.main.async {
+            await MainActor.run {
                 self.desserts = listResults
             }
         }
@@ -43,7 +43,7 @@ class DessertStore: ObservableObject {
         Task {
             let detailedDessert = await dataSource.fetchDessert(desserts[dessertIndex])
             
-            DispatchQueue.main.async {
+            await MainActor.run {
                 self.desserts[dessertIndex] = detailedDessert
             }
         }
