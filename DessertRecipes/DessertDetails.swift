@@ -28,9 +28,9 @@ struct DessertDetails: View {
         .padding()
         .navigationTitle(dessert.name)
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
+        .task {
             if dessert.instructions == nil {
-                store.getDessertDetails(mealID: dessert.id)
+                await store.getDessertDetails(mealID: dessert.id)
             }
         }
     }

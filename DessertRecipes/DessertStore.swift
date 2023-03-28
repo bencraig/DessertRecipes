@@ -16,38 +16,36 @@ class DessertStore: ObservableObject {
         
     init () {
         networkManager = NetworkManager()
-
-        loadDessertList()
-    }
-    
-    func loadDessertList() {
+        
         Task {
-            do {
-                let dessertList = try await networkManager.fetchDessertList()
-                await MainActor.run {
-                    self.desserts = dessertList
-                }
-            } catch {
-                print(error)
-            }
+            await loadDessertList()
         }
     }
     
-    func getDessertDetails(mealID: Int) {
+    func loadDessertList() async {
+        do {
+            let dessertList = try await networkManager.fetchDessertList()
+            await MainActor.run {
+                self.desserts = dessertList
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func getDessertDetails(mealID: Int) async {
         guard let dessertIndex = self.desserts.firstIndex(where: {$0.id == mealID}) else {
             print("dessert not found")
             return
         }
         
-        Task {
-            do {
-                let detailedDessert = try await networkManager.fetchDessert(desserts[dessertIndex])
-                await MainActor.run {
-                    self.desserts[dessertIndex] = detailedDessert
-                }
-            } catch {
-                print(error)
+        do {
+            let detailedDessert = try await networkManager.fetchDessert(desserts[dessertIndex])
+            await MainActor.run {
+                self.desserts[dessertIndex] = detailedDessert
             }
+        } catch {
+            print(error)
         }
     }
 }
