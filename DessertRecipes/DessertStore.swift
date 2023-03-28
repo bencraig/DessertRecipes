@@ -15,7 +15,10 @@ class DessertStore: ObservableObject {
     private let networkManager: NetworkManager
         
     init () {
-        networkManager = NetworkManager()
+        networkManager = NetworkManager(
+            listURLString: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert",
+            detailsURLString: "https://themealdb.com/api/json/v1/1/lookup.php?i="
+        )
         
         Task {
             await loadDessertList()
@@ -33,8 +36,8 @@ class DessertStore: ObservableObject {
         }
     }
     
-    func getDessertDetails(mealID: Int) async {
-        guard let dessertIndex = self.desserts.firstIndex(where: {$0.id == mealID}) else {
+    func getDessertDetails(dessertID: Int) async {
+        guard let dessertIndex = self.desserts.firstIndex(where: {$0.id == dessertID}) else {
             print("dessert not found")
             return
         }

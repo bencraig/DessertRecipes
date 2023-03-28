@@ -13,10 +13,14 @@ enum NetworkManagerError: Error {
     case decodeFailure
 }
 
-struct NetworkManager {
-    //todo dependency inject
-    private let listURLString = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
-    private let detailsURLString = "https://themealdb.com/api/json/v1/1/lookup.php?i="
+final class NetworkManager {
+    private let listURLString : String
+    private let detailsURLString : String
+    
+    init (listURLString: String, detailsURLString: String) {
+        self.listURLString = listURLString
+        self.detailsURLString = detailsURLString
+    }
     
     func fetchDessertList() async throws -> [Dessert] {
         guard let url = URL(string: listURLString) else {
