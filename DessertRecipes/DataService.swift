@@ -9,7 +9,7 @@ import Foundation
 
 protocol DataService {
     
-    func fetchDessertList() async -> [Dessert]
+    func fetchDessertList() async throws -> [Dessert]
     func fetchDessert(_ dessert: Dessert) async -> Dessert
     
 }

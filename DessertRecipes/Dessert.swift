@@ -10,10 +10,20 @@
 
 import Foundation
 
-struct Dessert : Identifiable, Hashable { // todo codable 
-    let name: String
-    let id: Int
-    let imageURL: URL
+struct Dessert : Identifiable, Hashable, Codable {
+    let idMeal: String
+    let strMeal: String
+    let strMealThumb: String
+    
+    var name: String {
+        strMeal
+    }
+    var id: Int {
+        Int(idMeal) ?? 0
+    }
+    var imageURL: URL? {
+        URL(string: strMealThumb)
+    }
     
     var instructions: String?
     var ingredients: [String]?
@@ -21,4 +31,8 @@ struct Dessert : Identifiable, Hashable { // todo codable
     var imageData: Data?
     var sourceURL: URL?
     var youtubeURL: URL?
+}
+
+struct MealList: Codable {
+    let meals: [Dessert]
 }

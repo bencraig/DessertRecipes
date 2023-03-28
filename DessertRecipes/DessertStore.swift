@@ -16,20 +16,23 @@ class DessertStore: ObservableObject {
         }
     }
     
-    private let dataSource: DataService
+    private let networkManager: NetworkManager
         
     init () {
-        dataSource = NetworkService()
-        
+        networkManager = NetworkManager() // todo dependency injection
+
         loadDessertList()
     }
     
     func loadDessertList() {
         Task {
-            let listResults = await dataSource.fetchDessertList()
-            
-            await MainActor.run {
-                self.desserts = listResults
+            do {
+                let dessertList = try await networkManager.fetchDessertList()
+                await MainActor.run {
+                    self.desserts = dessertList
+                }
+            } catch {
+                print(error)
             }
         }
     }
@@ -41,10 +44,13 @@ class DessertStore: ObservableObject {
         }
         
         Task {
-            let detailedDessert = await dataSource.fetchDessert(desserts[dessertIndex])
-            
-            await MainActor.run {
-                self.desserts[dessertIndex] = detailedDessert
+            do {
+                let detailedDessert = try await networkManager.fetchDessert(desserts[dessertIndex])
+                await MainActor.run {
+                    self.desserts[dessertIndex] = detailedDessert
+                }
+            } catch {
+                print(error)
             }
         }
     }

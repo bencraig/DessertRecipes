@@ -16,13 +16,13 @@ struct DessertDetails: View {
     
     var body: some View {
         TabView {
-            ingredientsList
-                .tabItem {
-                    Label("Ingredients", systemImage: "list.dash")
-                }
             instructionsList
                 .tabItem {
                     Label("Instructions", systemImage: "oven")
+                }
+            ingredientsList
+                .tabItem {
+                    Label("Ingredients", systemImage: "list.dash")
                 }
         }
         .padding()
