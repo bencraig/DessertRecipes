@@ -28,22 +28,21 @@ struct DessertDetails: View {
         .padding()
         .navigationTitle(dessert.name)
         .navigationBarTitleDisplayMode(.inline)
-        .task {
+        .onAppear {
             if dessert.instructions == nil {
                 store.getDessertDetails(mealID: dessert.id)
             }
         }
     }
     
-    //todo refactor to avoid nil coalescing optionals so often
     var ingredientsList: some View {
         List {
             Section(header: Text("Ingredients and Measurements")) {
-                ForEach(dessert.ingredients?.indices ?? 0..<0, id:\.self) { index in
+                ForEach(dessert.ingredientList.indices, id:\.self) { index in
                     HStack {
-                        Text(dessert.ingredients?[index] ?? "")
+                        Text(dessert.ingredientList[index])
                             .frame(maxWidth:.infinity, alignment: .leading)
-                        Text(dessert.measurements?[index] ?? "")
+                        Text(dessert.measurementList[index])
                             .frame(maxWidth:.infinity, alignment: .trailing)
                     }
                 }
@@ -53,11 +52,12 @@ struct DessertDetails: View {
     
     private let iPadImageFactor = 3.0
     private let iPhoneImageFactor = 1.0
+    private let imageSize = 200.0
 
     var instructionsList: some View {
         ScrollView {
             Text("Instructions")
-            Text(dessert.instructions ?? "")
+            Text(dessert.instructionText)
                 .font(.system(.subheadline))
                 .padding()
             
@@ -65,7 +65,7 @@ struct DessertDetails: View {
             AsyncImage(url: dessert.imageURL, content: { thumbImage in
                 thumbImage
                     .resizable()
-                    .frame(width: 200 * imageScale, height: 200 * imageScale)
+                    .frame(width: imageSize * imageScale, height: imageSize * imageScale)
                     .scaledToFit()
                     .cornerRadius(5)
             }, placeholder: {
@@ -84,7 +84,7 @@ struct DessertDetails: View {
     }
 }
 
-// curious to see how bindings can work with preview, something like this but xcode not happy
+//todo fix - curious to see how bindings can work with preview, something like this but xcode not happy
 /*
 struct DessertDetailsView_Previews: PreviewProvider {
     // A View that simply wraps the real view we're working on

@@ -14,6 +14,7 @@ enum NetworkManagerError: Error {
 }
 
 struct NetworkManager {
+    //todo dependency inject
     private let listURLString = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
     private let detailsURLString = "https://themealdb.com/api/json/v1/1/lookup.php?i="
     

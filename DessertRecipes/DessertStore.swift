@@ -10,16 +10,12 @@
 import Foundation
 
 class DessertStore: ObservableObject {
-    @Published var desserts = [Dessert]() {
-        didSet {
-            // todo persistence
-        }
-    }
+    @Published var desserts = [Dessert]() //todo persistence
     
     private let networkManager: NetworkManager
         
     init () {
-        networkManager = NetworkManager() // todo dependency injection
+        networkManager = NetworkManager()
 
         loadDessertList()
     }

@@ -26,8 +26,17 @@ struct Dessert : Identifiable, Hashable, Codable {
     }
     
     var instructions: String?
+    var instructionText: String {
+        self.instructions ?? ""
+    }
     var ingredients: [String]?
+    var ingredientList: [String] {
+        self.ingredients ?? [""]
+    }
     var measurements: [String]?
+    var measurementList: [String] {
+        self.measurements ?? [""]
+    }
     var imageData: Data?
     var sourceURL: URL?
     var youtubeURL: URL?
