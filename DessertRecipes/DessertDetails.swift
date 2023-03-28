@@ -56,11 +56,6 @@ struct DessertDetails: View {
 
     var instructionsList: some View {
         ScrollView {
-            Text("Instructions")
-            Text(dessert.instructionText)
-                .font(.system(.subheadline))
-                .padding()
-            
             let imageScale = idiom == .pad ? iPadImageFactor : iPhoneImageFactor
             AsyncImage(url: dessert.imageURL, content: { thumbImage in
                 thumbImage
@@ -72,6 +67,11 @@ struct DessertDetails: View {
                 ProgressView()
             })
 
+            Text("Instructions")
+            Text(dessert.instructionText)
+                .font(.system(.subheadline))
+                .padding()
+            
             if let source = dessert.sourceURL {
                 Link("Source: \(source.host!)", destination: source)
                     .padding(.top)
